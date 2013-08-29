@@ -1,9 +1,9 @@
 require 'optparse'
 
 module Sword
-  module Execute
+  module CLI
     class Parser
-      def initialize(arguments, width)
+      def initialize(arguments = ARGV, width = 25)
         @arguments = arguments
         @parser = OptionParser.new do |parser|
           @parser = parser

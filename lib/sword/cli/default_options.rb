@@ -1,9 +1,9 @@
 module Sword
-  module Execute
-    class Options < Sword::Extendable
+  module CLI
+    class DefaultOptions < OptionList
       desc 'Permanently require the gems'
-      parse :add, Array do |gems|
-        log.info "Adding #{gems.join(', ')} to your #{Environment.local_gems}"
+      argument Array
+      parse :add do |gems|
         open(Environment.local_gems, 'a') { |f| gems.each { |g| f.puts g } }
         exit
       end
@@ -12,9 +12,9 @@ module Sword
       parse :compile, 'Compile Sword queries'
 
       desc 'Specify watch directory'
-      parse :d => :directory do |path|
-        env << path
-      end
+      default '.'
+      argument :path
+      parse :d => :directory
       
       desc 'Print this message'
       parse :h => :help do
@@ -22,12 +22,11 @@ module Sword
         exit
       end
 
-      desc 'Specify host (default is localhost)'
-      parse :host do |address|
-        env << address
-      end
+      desc 'Specify host'
+      default 'localhost'
+      parse :host, :address
 
-      desc 'Install must-have gems using RubyGems'
+      desc 'Install must-have gems'
       parse :i => :install do
         require 'sword/installer'
         Installer.install
@@ -37,14 +36,12 @@ module Sword
       parse :mutex, 'Turn on the mutex lock'
 
       desc 'Change the port, 1111 by default'
-      parse :p => :port do |number|
-        env = number
-      end
+      argument :number
+      parse :p => :port
 
       desc 'Make PID file'
-      parse :pid do |path|
-        env = path
-      end
+      argument :path
+      parse :pid
 
       desc 'Skip including gems from built-in list'
       parse :plain do
@@ -57,11 +54,11 @@ module Sword
       end
 
       desc 'Specify server'
-      parse :server do |name|
-        env = name
-      end
+      argument :name
+      parse :server
 
       desc 'Load settings from the file'
+      argument :path
       parse :settings do |path|
         instance_eval File.read(path)
       end
