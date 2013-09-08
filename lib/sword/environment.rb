@@ -15,8 +15,7 @@ module Sword
     e.gems = []
     e.port = 1111
 
-    e.home = Dir.home if Dir.respond_to? :home
-    e.home ||= ENV['HOME']
+    e.home = Dir.home if Dir.respond_to?(:home) ? Dir.home : ENV['HOME']
     e.local_gems = "#{e.home}/.swordgems"
     e.settings = "#{e.home}/.swordrc"
 

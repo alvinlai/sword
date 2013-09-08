@@ -36,7 +36,7 @@ module Sword
       parse :mutex, 'Turn on the mutex lock'
 
       desc 'Change the port, 1111 by default'
-      argument :number
+      default 1111
       parse :p => :port
 
       desc 'Make PID file'
