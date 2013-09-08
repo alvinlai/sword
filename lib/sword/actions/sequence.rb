@@ -1,6 +1,6 @@
 module Sword
   module Environment
-    class ActionSequence < Sword::Extendable
+    class Sequence < Sword::Extendable
 
     end
   end

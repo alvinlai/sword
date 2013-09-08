@@ -1,6 +1,6 @@
 module Sword
-  module Environment
-    class DefaultActions < ActionSequence
+  module Actions
+    class Default < Sequence
       condition System::OLD_RUBY
       action :require_rubygems do
         require 'rubygems'
