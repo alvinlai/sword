@@ -1,7 +1,7 @@
 module Sword
   module Actions
     class Default < Sequence
-      condition System::OLD_RUBY
+      condition Sword::System::OLD_RUBY
       action :require_rubygems do
         require 'rubygems'
       end

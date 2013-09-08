@@ -1,6 +1,6 @@
 module Sword
   module Plugins
-    class Compass < Sword::Server::Injections
+    class Compass < Sword::Injections::Injection
       inject :compass do
         return unless defined? Compass
         Compass.configuration do |c|

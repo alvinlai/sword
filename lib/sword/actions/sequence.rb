@@ -1,5 +1,7 @@
 module Sword
-  module Environment
+  module Actions
+    # TODO
+    # Abstraction, this one works like this
     class Sequence < Sword::Extendable
 
     end
