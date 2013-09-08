@@ -1,6 +1,6 @@
 module Sword
-  module CLI
-    class DefaultOptions < OptionList
+  module Options
+    class Default < List
       desc 'Permanently require the gems'
       argument Array
       parse :add do |gems|

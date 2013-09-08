@@ -1,7 +1,7 @@
 require 'optparse'
 
 module Sword
-  module CLI
+  module Options
     class Parser
       def initialize(arguments = ARGV, width = 25)
         @arguments = arguments
@@ -23,8 +23,6 @@ module Sword
         setters = methods.delete_if { |m| not m.to_s.start_with? 'parse_' }
         setters.sort.map(&:to_sym).each { |m| send m }
       end
-
-      include Options
     end
   end
 end
