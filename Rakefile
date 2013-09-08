@@ -2,9 +2,7 @@ desc 'Run specs'
 # require 'rspec/core/rake_task'
 # RSpec::Core::RakeTask.new(:spec)
 # Don't run tests while creating the concept
-task :spec do
-  exit 0
-end
+task(:spec) { exit 0 }
 
 GEM = 'sword'
 
